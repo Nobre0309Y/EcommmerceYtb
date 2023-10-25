@@ -1,11 +1,20 @@
+using Ecommerce.Data;
+using EcommmerceYtb.Repository.Class;
+using EcommmerceYtb.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
+
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddDbContext<DataContext>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("db")));
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<IUsuarioRepository, UsuariosRepository>();
 
 var app = builder.Build();
 
