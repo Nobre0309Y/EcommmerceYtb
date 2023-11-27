@@ -1,6 +1,8 @@
 using Ecommerce.Data;
 using EcommmerceYtb.Repository.Class;
 using EcommmerceYtb.Repository.Interface;
+using EcommmerceYtb.Service.Class;
+using EcommmerceYtb.Service.Interface;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -15,6 +17,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<DataContext>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("db")));
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IUsuarioRepository, UsuariosRepository>();
+builder.Services.AddTransient<IUsuarioService, UsuarioService>();
+
 
 var app = builder.Build();
 

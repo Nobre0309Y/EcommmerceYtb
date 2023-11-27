@@ -9,6 +9,8 @@ namespace EcommmerceYtb.Repository.Interface
         Task<Usuario?> GetById(int id);
         Task<Usuario?> GetByCpf(string cpf);
         void AddUsuarios(UsuarioInputDTO model);
+        Task<string> DelUsuario(int id);
+
 
 
 

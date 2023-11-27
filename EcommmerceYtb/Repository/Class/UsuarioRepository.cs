@@ -44,5 +44,17 @@ namespace EcommmerceYtb.Repository.Class
                 Nome = model.Nome,
             };
         }
+
+        public async Task<string> DelUsuario (int id)
+        {
+            var user = await _dataContext.Usuarios.Where(x => x.UsuarioId == id).FirstOrDefaultAsync();
+            if (user == null)
+            {
+                return "Usuário não existe";
+            }
+            _dataContext.Usuarios.Remove(user);
+            _dataContext.SaveChanges();
+            return "success";
+        }
     }
 }
